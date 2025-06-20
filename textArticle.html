@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статья | План Б</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./картинки/главная 1 — копия.png">
+    <script src="articles-data.js"></script>
+</head>
+<body>
+    <header class="site-header">
+      <div class="logo">
+        <a href="index.html"><img src="./картинки/лого.png" class="logo_img" alt="" /></a>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="./articles.html" class="nav-menu-text">Статьи</a>
+        <a href="chat.html" class="nav-menu-text">Чат</a>
+      </nav>
+
+      <div class="header-icons">
+        <span class="icon"><a href="search.html"><img src="./картинки/icons8-лупа.svg" alt=""></a></span>
+        <span class="icon" id="auth-icon">
+          <a href="#" id="profile-link">
+            <img src="./картинки/user_t265c9dtai60.svg" alt="Профиль">
+          </a>
+        </span>
+      </div>
+    </header>
+
+
+    <div id="article-content">
+        <!-- Контент будет вставлен сюда -->
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('article');
+    const articleData = articlesData[articleId];
+    
+    if (!articleData) {
+        window.location.href = 'articles.html';
+        return;
+    }
+    
+    document.title = articleData.title + ' | План Б';
+    
+    let articleHtml = `
+        <article class="article">
+            <h1 class="article__title">${articleData.title}</h1>
+            <div class="intro-block">
+                <img src="${articleData.introImage}" alt="${articleData.title}" class="intro-block__image">
+                <div class="intro-block__text">
+                    <p>${articleData.introText}</p>
+                </div>
+            </div>
+        </article>
+    `;
+    
+    articleData.sections.forEach(section => {
+        switch(section.type) {
+            case 'cleaning':
+                articleHtml += `
+                    <section class="cleaning-section">
+                        <h2 class="cleaning-title">${section.title}</h2>
+                        <p class="cleaning-description">${section.description}</p>
+                        <div class="steps-row">
+                            ${section.steps.map((step, index) => `
+                                <div class="step-card ${index % 2 === 0 ? 'gray-card' : 'green-card'}">
+                                    <p>${step}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+                `;
+                break;
+                
+            case 'smell-source':
+                articleHtml += `
+                    <section class="smell-source-section">
+                        <h2 class="section-title">${section.title}</h2>
+                        <div class="smell-source-content">
+                            <div class="smell-source-text">
+                                <p>${section.text}</p>
+                            </div>
+                            <img src="${section.image}" alt="${section.title}" class="smell-source-image" width="280" height="205">
+                        </div>
+                    </section>
+                `;
+                break;
+                
+            case 'absorbents':
+                articleHtml += `
+                    <section class="absorbents-section">
+                        <h2 class="section-title">${section.title}</h2>
+                        <div class="absorbents-container">
+                            <div class="absorbent-items">
+                                ${section.items.map(item => `
+                                    <div class="absorbent-item">
+                                        <div class="green-square"></div>
+                                        <span>${item}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="absorbent-note">
+                                <img src="./картинки/галочка.svg" alt="" class="note-icon">
+                                <span>${section.note}</span>
+                            </div>
+                        </div>
+                    </section>
+                `;
+                break;
+                
+            case 'timeline':
+                articleHtml += `
+                    <section class="placement-section">
+                        <h2 class="section-title">${section.title}</h2>
+                        <div class="timeline">
+                            <div class="timeline-line"></div>
+                            ${section.points.map((point, index) => `
+                                <div class="timeline-item">
+                                    <div class="timeline-point"></div>
+                                    <div class="timeline-text ${index % 2 === 0 ? 'right' : 'left'}">
+                                        <p>${point}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+                `;
+                break;
+                
+            case 'prevention':
+                articleHtml += `
+                    <section class="prevention-section">
+                        <h2 class="section-title">${section.title}</h2>
+                        <div class="prevention-content">
+                            <p>${section.text}</p>
+                        </div>
+                        <button class="favorite-button">Добавить в любимые статьи</button>
+                    </section>
+                `;
+                break;
+        }
+    });
+    
+    document.getElementById('article-content').innerHTML = articleHtml;
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статьи | План Б</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./картинки/главная 1 — копия.png">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <header class="site-header">
+      <div class="logo">
+        <a href="index.html"><img src="./картинки/лого.png" class="logo_img" alt=""></a>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="./articles.html" class="nav-menu-text">Статьи</a>
+        <a href="chat.html" class="nav-menu-text">Чат</a>
+      </nav>
+
+      <div class="header-icons">
+        <span class="icon"><a href="search.html"><img src="./картинки/icons8-лупа.svg" alt=""></a></span>
+        <span class="icon" id="auth-icon">
+          <a href="personal account.html" id="profile-link">
+            <img src="./картинки/user_t265c9dtai60.svg" alt="Профиль">
+          </a>
+        </span>
+      </div>
+    </header>
+        
+    <!-- Основной контент -->
+    <main class="articles-container">
+        <!-- Статья 1 -->
+        <article class="article-block black-bg">
+            <div class="article-content">
+                <h2>Дом, в который хочется возвращаться</h2>
+                <p>Создавай комфорт каждый день — с нашими простыми и действенными советами твой дом станет местом силы, уюта и вдохновения.</p>
+                <a href="./articles for the home.html"><button class="read-btn">Читать сейчас</button></a>
+            </div>
+            <div class="article-image">
+                <img src="./картинки/статьи 1.webp" alt="Дом">
+                <div class="smooth-fade"></div>
+            </div>
+        </article>
+        
+        <div class="article-divider"></div>
+        
+        <!-- Статья 2 -->
+        <article class="article-block gray-bg">
+            <div class="article-image">
+                <img src="./картинки/статьи 2.png" alt="Учеба">
+                <div class="smooth-fade-right"></div>
+            </div>
+            <div class="article-content">
+                <h2>Когда учеба мешает спать</h2>
+                <p>Статьи, которые помогут выжить в мире расписаний, дедлайнов и экзаменов. Учеба без нервов — реально.</p>
+                <a href="articles for students.html"><button class="read-btn">Читать сейчас</button></a>
+            </div>
+        </article>
+        
+        <div class="article-divider"></div>
+        
+        <!-- Статья 3 -->
+        <article class="article-block black-bg">
+            <div class="article-content">
+                <h2>Карьеру строят, как дом — по кирпичику</h2>
+                <p>Первое резюме, первая стажировка, первый отказ — это не неудачи, а шаги на пути к твоей стабильной и уверенной работе.</p>
+                <a href="articles for work.html"><button class="read-btn">Читать сейчас</button></a>
+            </div>
+            <div class="article-image">
+                <img src="./картинки/статьи 3.jpg" alt="Дом">
+                <div class="smooth-fade"></div>
+            </div>
+        </article>
+    </main>
+</body>
+</html>

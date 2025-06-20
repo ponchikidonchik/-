@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./картинки/главная 1 — копия.png">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <a href="index.html" class="home-link">На главную</a>
+    
+    <div class="main-content">
+        <div class="user-info">
+            <div class="avatar-container">
+                <h2>Личный кабинет</h2>
+                <div id="avatar" class="avatar"></div>
+                <p>Выберите цвет для своего профиля:</p>
+                <div class="color-picker">
+                    <div class="color-option selected" style="background: #76B900;" onclick="changeAvatarColor('#76B900')"></div>
+                    <div class="color-option" style="background: #e53935;" onclick="changeAvatarColor('#e53935')"></div>
+                    <div class="color-option" style="background: #000000;" onclick="changeAvatarColor('#000')"></div>
+                    <div class="color-option" style="background: #9B59B6;" onclick="changeAvatarColor('#9B59B6')"></div>
+                </div>
+            </div>
+            
+            <p><strong>Электронная почта:</strong> <span id="userEmail">Загрузка...</span></p>
+            <p><strong>Дата регистрации:</strong> <span id="accountCreated">Загрузка...</span></p>
+            
+            <button class="logout-btn" onclick="logout()">Выйти</button>
+        </div>
+
+        <div class="favorites">
+            <h2>Любимые статьи</h2>
+            <ul class="article-list">
+                <li class="article-item">
+                    <h3>У вас пока нет любимых статей</h3>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDJuI6x0N6gBMeag2TbAPhx9V9o8a94kQg",
+            authDomain: "diplom-81673.firebaseapp.com",
+            projectId: "diplom-81673",
+            storageBucket: "diplom-81673.appspot.com",
+            messagingSenderId: "531581375497",
+            appId: "1:531581375497:web:c396122364051111db54d8"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = "authorization.html";
+                return;
+            }
+            
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('accountCreated').textContent = 
+                new Date(user.metadata.creationTime).toLocaleDateString('ru-RU');
+            
+            const avatar = document.getElementById('avatar');
+            const username = user.email.split('@')[0];
+            avatar.textContent = username.substring(0, 2).toUpperCase();
+            
+            const savedColor = localStorage.getItem('avatarColor');
+            if (savedColor) {
+                avatar.style.backgroundColor = savedColor;
+                updateColorPicker(savedColor);
+            }
+        });
+        
+        function changeAvatarColor(color) {
+            document.getElementById('avatar').style.backgroundColor = color;
+            localStorage.setItem('avatarColor', color);
+            updateColorPicker(color);
+        }
+        
+        function logout() {
+            auth.signOut().then(() => {
+                window.location.href = "authorization.html";
+            }).catch(error => {
+                console.error("Ошибка выхода:", error);
+                alert("Ошибка при выходе: " + error.message);
+            });
+        }
+    </script>
+</body>
+</html>

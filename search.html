@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск статей - Plan B</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./картинки/главная 1 — копия.png">
+</head>
+<body>
+  <header class="site-header">
+      <div class="logo">
+        <a href="index.html"><img src="./картинки/лого.png" class="logo_img" alt="Логотип"></a>
+      </div>
+      <nav class="nav-menu">
+        <a href="./articles.html" class="nav-menu-text">Статьи</a>
+        <a href="chat.html" class="nav-menu-text">Чат</a>
+      </nav>
+      <div class="header-icons">
+        <span class="icon"><a href="search.html"><img src="./картинки/icons8-лупа.svg" alt=""></a></span>
+        <span class="icon">
+          <a href="personal account.html">
+            <img src="./картинки/user_t265c9dtai60.svg" alt="Профиль">
+          </a>
+        </span>
+      </div>
+  </header>
+
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Поиск статей...">
+      <img src="./картинки/icons8-лупа.svg" alt="Поиск" class="search-icon">
+    </div>
+    
+    <div class="search-tags" id="search-tags">
+      <div class="tag" data-tag="дом">Дом</div>
+      <div class="tag" data-tag="учеба">Учеба</div>
+      <div class="tag" data-tag="работа">Работа</div>
+      <div class="tag" data-tag="уборка">Уборка</div>
+      <div class="tag" data-tag="советы">Советы</div>
+      <div class="tag" data-tag="карьера">Карьера</div>
+      <div class="tag" data-tag="навыки">Навыки</div>
+    </div>
+    
+    <div class="searchs-container" id="searchs-container">
+      <!-- Статьи будут загружаться здесь -->
+    </div>
+  </div>
+
+  <script>
+    // Все статьи из вашего JSON
+    const articlesData = {
+        "fridge-smell": {
+            title: "Как избавиться от запаха в холодильнике?",
+            introImage: "./картинки/поп статьи.jpg",
+            introText: "Запах в холодильнике может появиться по разным причинам — испорченные продукты, задержка с очисткой или просто накопление неприятных ароматов.",
+            tags: ["дом", "уборка", "советы"]
+        },
+        "toilet-cleaning": {
+            title: "Как отмыть унитаз без химии?",
+            introImage: "./картинки/унитаз.jpg",
+            introText: "Чистота без химии — просто и легко! Используйте натуральные средства для безопасной и эффективной очистки унитаза.",
+            tags: ["дом", "уборка"]
+        },
+        "wool-washing": {
+            title: "Как эффективно стирать шерстяные вещи?",
+            introImage: "./картинки/шерсть.jpg",
+            introText: "Шерстяные вещи требуют особого ухода. Правильная стирка сохранит их форму, цвет и качество надолго.",
+            tags: ["дом", "советы"]
+        },
+        "tile-cleaning": {
+            title: "Как почистить плитку от жира?",
+            introImage: "./картинки/жир.jpg",
+            introText: "Жирные пятна на кухонной плитке — не проблема! Узнайте, как вернуть плитке идеальную чистоту без повреждений.",
+            tags: ["дом", "уборка"]
+        },
+        "wood-furniture": {
+            title: "Как ухаживать за деревянной мебелью?",
+            introImage: "./картинки/мебель.avif",
+            introText: "Правильный уход сохранит красоту и долговечность деревянной мебели. Узнайте профессиональные секреты без использования дорогих средств.",
+            tags: ["дом", "советы"]
+        },
+        "oven-cleaning": {
+            title: "Как правильно чистить духовку?",
+            introImage: "./картинки/духовка.jpg",
+            introText: "Чистая духовка — залог вкусных и безопасных блюд. Узнайте, как эффективно удалить жир и нагар без повреждения поверхностей.",
+            tags: ["дом", "уборка"]
+        },
+        "study-rest": {
+            title: "Как планировать отдых во время учебы?",
+            introImage: "./картинки/отдых.jpg",
+            introText: "Грамотное чередование учебы и отдыха повышает продуктивность на 40%. Узнайте, как отдыхать эффективно без ущерба для успеваемости.",
+            tags: ["учеба", "советы"]
+        },
+        "first-year-stress": {
+            title: "Как избежать стресса на первом курсе?",
+            introImage: "./картинки/стресс.webp",
+            introText: "Первый курс — это испытание, но с этими советами вы справитесь без лишних переживаний.",
+            tags: ["учеба", "советы"]
+        },
+        "new-city": {
+            title: "Как адаптироваться к жизни в новом городе?",
+            introImage: "./картинки/город.jfif",
+            introText: "Переезд в новый город — это вызов, но с нашими советами вы освоитесь быстрее.",
+            tags: ["учеба", "советы"]
+        },
+        "diploma-defense": {
+            title: "Как готовиться к защите диплома?",
+            introImage: "./картинки/диплом.jpg",
+            introText: "Защита диплома — важный этап в жизни студента. Наши советы помогут вам подготовиться уверенно.",
+            tags: ["учеба", "советы"]
+        },
+        "study-motivation": {
+            title: "Как мотивировать себя на учебу, если не хочется?",
+            introImage: "./картинки/мотивация.jpg",
+            introText: "Даже самые ответственные студенты сталкиваются с потерей мотивации. Эти проверенные методы помогут вам начать учиться даже через «не хочу».",
+            tags: ["учеба", "советы"]
+        },
+        "study-time": {
+            title: "Как лучше учиться — по ночам или днем?",
+            introImage: "./картинки/день учёба.png",
+            introText: "Выбор оптимального времени для учёбы влияет на продуктивность и здоровье. Разберём плюсы и минусы разных режимов.",
+            tags: ["учеба", "советы"]
+        },
+        "interview-prep": {
+            title: "Как подготовиться к собеседованию?",
+            introImage: "./картинки/собеседование.webp",
+            introText: "Успешное собеседование — это 90% подготовки. Узнайте, как произвести впечатление на работодателя.",
+            tags: ["работа", "карьера", "советы"]
+        },
+        "career-choice": {
+            title: "Как выбрать карьерный путь после учебы?",
+            introImage: "./картинки/путь.webp",
+            introText: "Выбор карьеры — важное решение, которое определяет ваше будущее. Узнайте, как найти путь, соответствующий вашим навыкам и ценностям.",
+            tags: ["работа", "карьера"]
+        },
+        "leadership-skills": {
+            title: "Как развить навыки лидерства?",
+            introImage: "./картинки/лидер.webp",
+            introText: "Лидерство — это навык, который можно развить. Узнайте, как прокачать ключевые качества и вдохновлять других.",
+            tags: ["работа", "навыки"]
+        },
+        "teamwork-skills": {
+            title: "Как научиться работать в команде?",
+            introImage: "./картинки/команда.webp",
+            introText: "Командная работа — ключевой навык в современном мире. Узнайте, как стать ценным участником команды.",
+            tags: ["работа", "навыки"]
+        },
+        "conflict-resolution": {
+            title: "Как решать конфликты в коллективе",
+            introImage: "./картинки/поп статья 2.webp",
+            introText: "Конфликты в коллективе — это естественно, но важно уметь их правильно разрешать. Узнайте эффективные стратегии.",
+            tags: ["работа", "навыки"]
+        },
+        "work-life-balance": {
+            title: "Как найти баланс между работой и личной жизнью?",
+            introImage: "./картинки/баланс.jfif",
+            introText: "Гармония между карьерой и личным временем — ключ к продуктивности и счастью. Узнайте практичные стратегии.",
+            tags: ["работа", "советы"]
+        }
+    };
+
+    // Загрузка статей при открытии страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        displayArticles(articlesData);
+        
+        // Поиск при вводе текста
+        document.getElementById('search-input').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            filterArticles(searchTerm);
+        });
+        
+        // Фильтрация по тегам
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.classList.toggle('active');
+                filterByTags();
+            });
+        });
+    });
+
+    // Отображение статей
+    function displayArticles(articles) {
+        const container = document.getElementById('searchs-container');
+        container.innerHTML = '';
+        
+        if (Object.keys(articles).length === 0) {
+            container.innerHTML = '<div class="no-results">Статьи не найдены</div>';
+            return;
+        }
+        
+        for (const [id, article] of Object.entries(articles)) {
+            const articleElement = document.createElement('a');
+            articleElement.href = `textArticle.html?article=${id}`;
+            articleElement.className = 'search-card';
+            articleElement.innerHTML = `
+                <img src="${article.introImage}" alt="${article.title}" class="search-image">
+                <div class="search-content">
+                    <h3 class="search-title">${article.title}</h3>
+                    <p class="search-text">${article.introText}</p>
+                </div>
+            `;
+            container.appendChild(articleElement);
+        }
+    }
+
+    // Фильтрация статей по тексту
+    function filterArticles(searchTerm) {
+        const filtered = {};
+        
+        for (const [id, article] of Object.entries(articlesData)) {
+            if (article.title.toLowerCase().includes(searchTerm) || 
+                article.introText.toLowerCase().includes(searchTerm)) {
+                filtered[id] = article;
+            }
+        }
+        
+        // Применяем дополнительно фильтр по тегам, если они выбраны
+        const activeTags = Array.from(document.querySelectorAll('.tag.active')).map(t => t.dataset.tag);
+        if (activeTags.length > 0) {
+            for (const [id, article] of Object.entries(filtered)) {
+                if (!activeTags.some(tag => article.tags.includes(tag))) {
+                    delete filtered[id];
+                }
+            }
+        }
+        
+        displayArticles(filtered);
+    }
+
+    // Фильтрация по тегам
+    function filterByTags() {
+        const activeTags = Array.from(document.querySelectorAll('.tag.active')).map(t => t.dataset.tag);
+        const searchTerm = document.getElementById('search-input').value.toLowerCase();
+        
+        if (activeTags.length === 0 && searchTerm === '') {
+            displayArticles(articlesData);
+            return;
+        }
+        
+        const filtered = {};
+        
+        for (const [id, article] of Object.entries(articlesData)) {
+            // Проверяем соответствие тегам
+            const tagsMatch = activeTags.length === 0 || 
+                             activeTags.some(tag => article.tags.includes(tag));
+            
+            // Проверяем соответствие поисковому запросу
+            const searchMatch = searchTerm === '' || 
+                               article.title.toLowerCase().includes(searchTerm) || 
+                               article.introText.toLowerCase().includes(searchTerm);
+            
+            if (tagsMatch && searchMatch) {
+                filtered[id] = article;
+            }
+        }
+        
+        displayArticles(filtered);
+    }
+  </script>
+</body>
+</html>

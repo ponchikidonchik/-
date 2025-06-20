@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>План B</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./картинки/главная 1 — копия.png">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo">
+        <a href="index.html"><img src="./картинки/лого.png" class="logo_img" alt="" /></a>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="./articles.html" class="nav-menu-text">Статьи</a>
+        <a href="chat.html" class="nav-menu-text">Чат</a>
+      </nav>
+
+      <div class="header-icons">
+        <span class="icon"><a href="search.html"><img src="./картинки/icons8-лупа.svg" alt=""></a></span>
+        <span class="icon" id="auth-icon">
+          <a href="#" id="profile-link">
+            <img src="./картинки/user_t265c9dtai60.svg" alt="Профиль">
+          </a>
+        </span>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="carousel">
+          <input type="radio" name="slides" checked="checked" id="slide-1" />
+          <input type="radio" name="slides" id="slide-2" />
+          <input type="radio" name="slides" id="slide-3" />
+          <input type="radio" name="slides" id="slide-4" />
+          <input type="radio" name="slides" id="slide-5" />
+          <ul class="carousel__slides">
+            <li class="carousel__slide">
+              <figure>
+                <figcaption>
+                  <a class="theFirstLevelHeader"> Твой План Б всегда готов</a>
+                  <p class="theSecondLevel">
+                    Не сработал план А? Для этого мы и создали этот сайт. Здесь
+                    ты найдёшь советы, поддержку, идеи и решение самых разных
+                    вопросов.
+                  </p>
+                  <button class="theMainButton">
+                    Начни с главного. Начни с Плана Б
+                  </button>
+                </figcaption>
+                <div>
+                  <img src="./картинки/главная 1.jpg" alt="" />
+                </div>
+              </figure>
+            </li>
+            
+            <li class="carousel__slide">
+              <figure>
+                <figcaption>
+                  <a class="theFirstLevelHeader">Вопрос задан — ответ рядом.</a>
+                  <p class="theSecondLevel">
+                    Здесь говорят. Слушают. Помогают. Наш чат — это место, где
+                    можно задать вопрос и получить ответ от таких же людей, как
+                    ты. Без осуждения, без пафоса.
+                  </p>
+                  <a href="chat.html"><button class="theMainButton">
+                    Открой «Чат» и присоединяйся
+                  </button></a>
+                </figcaption>
+                <div>
+                  <img src="./картинки/главная 2.jpg" alt="" />
+                </div>
+              </figure>
+            </li>
+
+            <li class="carousel__slide">
+              <figure>
+                <figcaption>
+                  <a class="theFirstLevelHeader">Жить комфортно — это навык</a>
+                  <p class="theSecondLevel">
+                    Мы собрали самые простые и действенные советы для дома: как
+                    всё отмыть, где найти порядок, чем заменить дорогие
+                    средства.
+                  </p>
+                  <a href="articles for the home.html"><button class="theMainButton">Узнать больше</button></a>
+                </figcaption>
+                <div>
+                  <img class="mainImg" src="./картинки/главная 3.webp" alt="" />
+                </div>
+              </figure>
+            </li>
+
+            <li class="carousel__slide">
+              <figure>
+                <figcaption>
+                  <a class="theFirstLevelHeader">Собрал рюкзак — собрал себя</a>
+                  <p class="theSecondLevel">
+                    Ты только поступил? Или уже варишься в студенческой каше? Мы
+                    подскажем, что взять в общагу, как не потеряться в учёбе и
+                    как выжить на стипендию.
+                  </p>
+                  <a href="articles for students.html"><button class="theMainButton">
+                    Загляни в раздел «Для студентов»
+                  </button></a>
+                </figcaption>
+                <div>
+                  <img class="mainImg" src="./картинки/главная 4.jpg" alt="" />
+                </div>
+              </figure>
+            </li>
+
+            <li class="carousel__slide">
+              <figure>
+                <figcaption>
+                  <a class="theFirstLevelHeader">Мечтаешь — действуй</a>
+                  <p class="theSecondLevel">
+                    Карьеру не строят за день. Но каждое решение —
+                    кирпичик. Собрали базу полезных материалов, чтобы ты
+                    двигался осознанно.
+                  </p>
+                  <a href="articles for work.html"><button class="theMainButton">
+                    Начни с раздела «Карьера»
+                  </button></a>
+                </figcaption>
+                <div>
+                  <img class="mainImg" src="./картинки/главная 5.jpg" alt="" />
+                </div>
+              </figure>
+            </li>
+
+          </ul>
+          <ul class="carousel__thumbnails">
+            <li>
+              <label for="slide-1">
+                <div class="strip"></div>
+                <a class="miniHeader">Plan B</a>
+                <p class="miniHeader">Иногда нужен просто правильный старт.</p>
+              </label>
+            </li>
+            <li>
+              <label for="slide-2"
+                ><div class="strip"></div>
+                <a class="miniHeader">Чат</a>
+                <p class="miniHeader">
+                  Задавай вопросы, делись опытом, находи решения в живом
+                  общении.
+                </p>
+              </label>
+            </li>
+            <li>
+              <label for="slide-3"
+                ><div class="strip"></div>
+                <a class="miniHeader">Дом не ждёт</a>
+                <p class="miniHeader">
+                  Открой секреты быта — от уборки до ремонта.
+                </p>
+              </label>
+            </li>
+            <li>
+              <label for="slide-4"
+                ><div class="strip"></div>
+                <a class="miniHeader">СтудЛайф</a>
+                <p class="miniHeader">Гид по студенческой жизни.</p>
+              </label>
+            </li>
+            <li>
+              <label for="slide-5"
+                ><div class="strip"></div>
+                <a class="miniHeader">Работа с нуля</a>
+                <p class="miniHeader">
+                  Как составить первое резюме, где искать подработку и не
+                  сгореть в первые месяцы.
+                </p>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="green-stripe"></div>
+<section class="popular-now">
+  <div class="container">
+    <div class="popular-header">
+      <h2 class="popular-title">Популярное сейчас</h2>
+      <div class="popular-nav">
+        <button class="popular-nav-btn prev-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="#76B900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="popular-nav-btn next-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6L15 12L9 18" stroke="#76B900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <div class="popular-container">
+      <div class="popular-grid">
+        <a href="textArticle.html?article=fridge-smell"><div class="popular-item with-image">
+          <img src="./картинки/поп статьи.jpg" alt="" class="popular-image">
+          <div class="popular-content">
+            <span class="popular-category">Статьи | Для дома</span>
+            <h3 class="popular-article-title">Как избавиться от запаха в холодильнике?</h3>
+          </div>
+        </div></a>
+
+        <a href="textArticle.html?article=conflict-resolution"><div class="popular-item with-image">
+          <img src="./картинки/поп статья 2.webp" alt="" class="popular-image">
+          <div class="popular-content">
+            <span class="popular-category">Статьи | Работа</span>
+            <h3 class="popular-article-title">Как решать конфликты в коллективе?</h3>
+          </div>
+        </div></a>
+
+        <a href="textArticle.html?article=study-time"><div class="popular-item with-image">
+          <img src="./картинки/поп стать 1.jpg" alt="" class="popular-image">
+          <div class="popular-content">
+            <span class="popular-category">Статьи | Для студентов</span>
+            <h3 class="popular-article-title">Как лучше учиться — по ночам или днем?</h3>
+          </div>
+        </div></a>
+
+        <div class="popular-item with-image">
+          <img src="./картинки/поп стататьи 3.jpg" alt="" class="popular-image">
+          <div class="popular-content">
+            <span class="popular-category">Статьи | Для дома</span>
+            <h3 class="popular-article-title">Как избавиться от пыли в квартире?</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="green-stripe"></div>
+<section class="search-help-section">
+  <div class="container">
+    <h2 class="search-help-title">Не можете найти нужную информацию?</h2>
+    
+    <div class="help-options">
+      <div class="help-option">
+        <h3>Воспользуйтесь поиском</h3>
+        <p>Просто введите ключевые слова и мы найдем для вас подходящие советы и статьи.</p>
+        <a href="search.html"><button class="try-button">Попробовать</button></a>
+      </div>
+      
+      <div class="divid">ИЛИ</div>
+      
+      <div class="help-option">
+        <h3>Напишите в чат</h3>
+        <p>Задайте вопрос в чате и получите помощь от других пользователей или нашей команды.</p>
+        <a href="chat.html"><button class="try-button">Попробовать</button></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="green-stripe"></div>
+<section class="advice-roulette">
+  <div class="container">
+    <div class="roulette-wrapper">
+      <div class="roulette-text">
+        <h1 class="roulette-title">Рулетка советов</h1>
+        <p class="roulette-description">
+          Не знаешь, с чего начать?<br>
+          Запусти рулетку — и получи случайный полезный совет!<br>
+          Иногда именно случайный лайфхак оказывается самым нужным.
+        </p>
+      </div>
+      
+      <div class="roulette-content">
+        <div class="advice-display">
+          <p class="current-advice">Чтобы избавиться от запаха в обуви, положи туда чайный пакетик!</p>
+        </div>
+      </div>
+    </div>
+    
+    <button class="try-button" id="rouletteButton">Попробовать</button>
+  </div>
+</section>
+
+<script>
+  const popularGrid = document.querySelector('.popular-grid');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  
+  // Шаг прокрутки (ширина одной карточки + отступ)
+  const scrollStep = 300; 
+  
+  prevBtn.addEventListener('click', () => {
+    popularGrid.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    popularGrid.scrollBy({ left: scrollStep, behavior: 'smooth' });
+  });
+  
+  // Отключаем кнопки в крайних положениях
+  popularGrid.addEventListener('scroll', () => {
+    prevBtn.disabled = popularGrid.scrollLeft === 0;
+    nextBtn.disabled = popularGrid.scrollLeft + popularGrid.clientWidth >= popularGrid.scrollWidth - 1;
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+  const adviceList = [
+    "Чтобы избавиться от запаха в обуви, положи туда чайный пакетик!",
+    "Для быстрой уборки начни с самого дальнего угла комнаты.",
+    "Заморозь лимоны перед использованием - так их легче натирать.",
+    "Храни скрепки с магнитом на холодильнике, чтобы они всегда были под рукой.",
+    "Используй пустые картонные рулоны от туалетной бумаги для организации кабелей.",
+    "Перед выходом сфотографируй розетки и выключатели - так не забудешь, что нужно выключить.",
+    "Добавь щепотку соли в кофе - это уберет горечь.",
+    "Храни специи в магнитных баночках на боковой поверхности холодильника.",
+    "Чтобы ножи дольше оставались острыми, храни их в деревянной подставке или на магнитной планке.",
+    "Замени обычные лампочки на светодиодные – они экономят энергию и служат дольше.",
+    "Если разбилось стекло, собери осколки кусочком хлеба – они не разлетятся.",
+    "Заморозь виноград и используй вместо льда в напитках – он не разбавляет вкус.",
+    "Чтобы сыр не засыхал, смажь срез сливочным маслом.",
+    "Если телефон упал в воду, сразу засыпь его в рис – он впитает влагу.",
+    "Надень резинку на открытую банку с краской – так удобно убирать излишки с кисти.",
+    "Чтобы бананы не чернели, оберни их плодоножки пищевой пленкой.",
+    "Используй старую зубную щетку для чистки клавиатуры и труднодоступных мест.",
+    "Чтобы яйца при варке не трескались, добавь в воду ложку соли.",
+    "Храни чеснок и лук в бумажных пакетах – так они не прорастут.",
+    "Если нужно быстро охладить напиток, оберни бутылку мокрым полотенцем и положи в морозилку.",
+    "Чтобы обувь не натирала, натри проблемные места воском или мылом.",
+    "Используй прищепки, чтобы фиксировать пакеты с едой в холодильнике.",
+    "Если нет подставки под горячее, подойдет обычная крышка от банки.",
+    "Чтобы удалить следы от наклеек, потри их растительным маслом.",
+    "Если затупились ножницы, разрежь ими наждачную бумагу.",
+    "Чтобы цветы в вазе стояли дольше, добавь в воду щепотку сахара.",
+    "Если нужно срочно погладить вещь, повесь ее в ванной во время горячего душа – пар разгладит складки."
+  ];
+  
+  const adviceElement = document.querySelector('.current-advice');
+  const rouletteButton = document.getElementById('rouletteButton');
+  
+  rouletteButton.addEventListener('click', function() {
+    // Анимация исчезновения
+    adviceElement.style.opacity = '0';
+    adviceElement.style.transform = 'translateY(10px)';
+    
+    setTimeout(() => {
+      // Выбираем случайный совет
+      const randomIndex = Math.floor(Math.random() * adviceList.length);
+      adviceElement.textContent = adviceList[randomIndex];
+      
+      // Анимация появления
+      adviceElement.style.opacity = '1';
+      adviceElement.style.transform = 'translateY(0)';
+    }, 300);
+  });
+});
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script>
+  // Конфиг Firebase (должен совпадать с тем, что в личном кабинете)
+  const firebaseConfig = {
+    apiKey: "AIzaSyDJuI6x0N6gBMeag2TbAPhx9V9o8a94kQg",
+    authDomain: "diplom-81673.firebaseapp.com",
+    projectId: "diplom-81673",
+    storageBucket: "diplom-81673.appspot.com",
+    messagingSenderId: "531581375497",
+    appId: "1:531581375497:web:c396122364051111db54d8"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+
+  // Проверяем статус авторизации
+  firebase.auth().onAuthStateChanged(user => {
+    const profileLink = document.getElementById('profile-link');
+    
+    if (user) {
+      // Если пользователь авторизован - ссылка ведет в личный кабинет
+      profileLink.href = "personal account.html";
+    } else {
+      // Если не авторизован - ссылка ведет на страницу регистрации
+      profileLink.href = "registration.html";
+    }
+  });
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./картинки/главная 1 — копия.png">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body class="register-page">
+    <a href="index.html" class="home-link">На главную</a>
+    
+    <div class="registration-container">
+        <h1 class="registration-title">Регистрация</h1>
+        <div class="registration-content">
+            <div class="form-section">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Электронная почта" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="password" placeholder="Пароль (минимум 6 символов)" required>
+                    </div>
+                    
+                    <button type="submit" class="register-btn">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+                    <div id="errorMessage" class="error-message"></div>
+                </form>
+                
+                <p style="text-align: center; margin-top: 15px; font-size: 14px;">
+                    Уже есть аккаунт? <a href="authorization.html" style="color: #76B900;">Войти</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDJuI6x0N6gBMeag2TbAPhx9V9o8a94kQg",
+            authDomain: "diplom-81673.firebaseapp.com",
+            projectId: "diplom-81673",
+            storageBucket: "diplom-81673.firebasestorage.app",
+            messagingSenderId: "531581375497",
+            appId: "1:531581375497:web:c396122364051111db54d8",
+            measurementId: "G-X0DE75QV3R"
+        };
+        firebase.initializeApp(firebaseConfig);
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorElement = document.getElementById('errorMessage');
+            errorElement.textContent = '';
+            if (password.length < 6) {
+                errorElement.textContent = 'Пароль должен быть не менее 6 символов';
+                return;
+            }
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    window.location.href = "personal account.html";
+                })
+                .catch(error => {
+                    const errorMessage = error.message
+                        .replace('Firebase: ', '')
+                        .replace(/\(auth\/.*?\)\.?/, '');
+                    errorElement.textContent = errorMessage;
+                });
+        });
+    </script>
+</body>
+</html>
